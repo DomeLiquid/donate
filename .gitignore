@@ -1,6 +1,5 @@
 front/.nuxt
 front/.output
-front/.vscode
 front/node_modules
 
 # Dependencies
