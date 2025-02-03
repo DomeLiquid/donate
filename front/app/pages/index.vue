@@ -1,0 +1,95 @@
+<script lang="ts" setup>
+import type { Post } from "#shared/types";
+
+const posts = ref<Post[]>([]);
+
+const { data, error } = await useFetch("/api/v1/posts");
+
+if (error.value) {
+  throw createError({ ...error.value, statusMessage: "Posts Not Found" });
+}
+
+if (data.value) {
+  // console.log(data);
+  posts.value = data.value.slice(0, 3);
+}
+
+useHead({
+  title: "Posts",
+});
+</script>
+
+<template>
+  <div class="flex min-h-dvh flex-col justify-center text-center">
+    <main class="container">
+      <template>
+        <ClientOnly>
+          <div
+            class="bg-background relative size-[600px] w-full overflow-hidden rounded-lg border"
+          >
+            <FlickeringGrid
+              class="relative inset-0 z-0 [mask-image:radial-gradient(450px_circle_at_center,white,transparent)]"
+              :square-size="4"
+              :grid-gap="6"
+              color="#60A5FA"
+              :max-opacity="0.5"
+              :flicker-chance="0.1"
+              :width="800"
+              :height="800"
+            />
+          </div>
+        </ClientOnly>
+      </template>
+      <div class="mb-6 flex justify-center">
+        <Icon name="logos:nuxt-icon" size="80" />
+      </div>
+      <h1 class="mb-6 text-center text-5xl font-bold">Hello, World!</h1>
+      <p class="text-brand-50 mb-12">Can you see me?</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <DialogModal size="xl" title="Modal title">
+          <template #trigger>Open Dialog</template>
+          <p v-for="i in 20" :key="i" class="mb-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+            architecto, enim vitae quibusdam culpa facilis assumenda expedita
+            aspernatur ut, dolore numquam quidem obcaecati? Dolorem ab ipsa,
+            earum voluptate id ullam.
+          </p>
+          <div
+            class="sticky -bottom-8 z-10 -mx-8 -mb-8 flex justify-end rounded-b-lg border-t border-gray-200 bg-white/50 px-8 pt-8 pb-8 backdrop-blur-sm"
+          >
+            <DialogClose as-child>
+              <AppButton>Close</AppButton>
+            </DialogClose>
+          </div>
+        </DialogModal>
+        <DialogDrawer title="Drawer title" position="left">
+          <template #trigger>
+            <AppButton>Left Drawer</AppButton>
+          </template>
+          <p>Hello, Left Drawer!</p>
+        </DialogDrawer>
+        <DialogDrawer title="Drawer title" position="bottom">
+          <template #trigger>
+            <AppButton>Bottom Drawer</AppButton>
+          </template>
+          <div class="container">
+            <p>Hello, Bottom Drawer!</p>
+          </div>
+        </DialogDrawer>
+        <DialogDrawer title="Drawer title" position="right">
+          <template #trigger>
+            <AppButton>Right Drawer</AppButton>
+          </template>
+          <p>Hello, Right Drawer!</p>
+        </DialogDrawer>
+      </div>
+      <p
+        class="mx-auto flex max-w-xl flex-wrap justify-center gap-2 pt-8 text-sm"
+      >
+        <span v-for="item in posts" :key="item.title">
+          {{ item.body }}
+        </span>
+      </p>
+    </main>
+  </div>
+</template>

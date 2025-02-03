@@ -1,0 +1,17 @@
+@utility scroll-touch {
+  -webkit-overflow-scrolling: "touch";
+}
+
+@utility container {
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
