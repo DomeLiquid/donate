@@ -16,6 +16,7 @@
     "@types/btoa": "^1.2.5",
     "@vee-validate/zod": "^4.15.0",
     "@vueuse/core": "^12.7.0",
+    "axios": "^1.8.1",
     "lucide-vue-next": "^0.475.0",
     "motion-v": "^0.10.0",
     "nuxt": "^3.15.4",
