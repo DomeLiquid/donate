@@ -104,12 +104,13 @@ const handleAssetSelect = (assetId: string) => {
 
 // 修改 handleSubmit 函数
 const handleSubmit = form.handleSubmit((values) => {
+  const botId = useRuntimeConfig().public.botId;
   const trace = uuidv4();
   if (!props.pid || props.pid.length === 0) {
     console.log("pid is empty");
     return;
   }
-  const payUrl = `https://mixin.one/pay/30aad5a5-e5f3-4824-9409-c2ff4152724e?asset=${values.assetId}&amount=${values.amount}&trace=${trace}&memo=${props.pid}`;
+  const payUrl = `https://mixin.one/pay/${botId}?asset=${values.assetId}&amount=${values.amount}&trace=${trace}&memo=${props.pid}`;
   window.location.href = payUrl;
   emit("update:open", false);
 });

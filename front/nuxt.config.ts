@@ -38,6 +38,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || "http://127.0.0.1:7777",
+      botId:
+        process.env.NUXT_PUBLIC_BOT_ID ||
+        "30aad5a5-e5f3-4824-9409-c2ff4152724e",
     },
   },
 });
