@@ -1,62 +1,43 @@
-import Tailwind from "@tailwindcss/vite";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: "2024-11-01",
   ssr: false,
-  devtools: {
-    enabled: true,
-  },
-  compatibilityDate: "2024-11-23",
+  devtools: { enabled: true },
   modules: [
-    "@nuxt/eslint",
-    "radix-vue/nuxt",
-    "@nuxt/icon",
+    "shadcn-nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
     "@nuxt/image",
-    "@nuxt/fonts",
-    "nuxt-security",
-    "@vueuse/nuxt",
-    "@pinia/nuxt",
   ],
-  css: ["~/assets/css/main.css"],
-  vite: {
-    plugins: [Tailwind()],
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: "./components/ui",
   },
-  fonts: {
-    experimental: {
-      processCSSVariables: true,
-    },
+  tailwindcss: {
+    // darkMode: "class",
   },
-  postcss: {
-    plugins: {
-      cssnano: {
-        preset: "default",
-      },
-    },
+  colorMode: {
+    preference: "dark", // default value of $colorMode.preference
+    fallback: "dark", // fallback value if not system preference found
+    hid: "nuxt-color-mode-script",
+    globalName: "__NUXT_COLOR_MODE__",
+    componentName: "ColorScheme",
+    classPrefix: "",
+    classSuffix: "-mode",
+    storage: "localStorage", // or 'sessionStorage' or 'cookie'
+    storageKey: "nuxt-color-mode",
   },
-  image: {
-    quality: 80,
-    format: ["webp"],
-  },
-  app: {
-    head: {
-      title: "Welcome",
-      titleTemplate: "%s - Nuxt 4 Starter Template",
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
-    },
-  },
+
   runtimeConfig: {
     public: {
-      buildAt: new Date().toLocaleString("zh-CN", {
-        timeZone: "Asia/Shanghai",
-      }),
-      environment: "production",
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || "http://127.0.0.1:7777",
     },
   },
-  future: {
-    compatibilityVersion: 4,
-  },
-  typescript: {
-    strict: true,
-  },
-  telemetry: false,
 });

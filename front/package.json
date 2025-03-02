@@ -5,61 +5,37 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "lint": "npx stylelint ./app/assets/css/**/*.css --fix && npx stylelint ./app/{components,pages,layouts}/**/*.vue --fix && eslint . --fix",
-    "postinstall": "nuxt prepare",
-    "typecheck": "npx nuxi typecheck .",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "*.{vue,ts,mjs,css}": [
-      "npm run lint",
-      "npm run typecheck"
-    ]
-  },
-  "engines": {
-    "node": "22.x"
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "^0.7.6",
-    "@nuxt/fonts": "^0.10.3",
-    "@nuxt/icon": "^1.10.3",
-    "@nuxt/image": "^1.9.0",
-    "@pinia/nuxt": "^0.9.0",
-    "@tailwindcss/vite": "^4.0.3",
-    "@vueuse/core": "^12.5.0",
-    "@vueuse/nuxt": "^12.5.0",
-    "motion-v": "^0.9.0",
-    "nuxt-security": "^2.1.5",
-    "pinia": "^2.3.1",
-    "radix-vue": "^1.9.13",
-    "tailwind-variants": "^0.3.1",
-    "tailwindcss": "^4.0.3",
+    "@nuxt/image": "1.9.0",
+    "@nuxtjs/color-mode": "3.5.2",
+    "@radix-icons/vue": "^1.0.0",
+    "@types/btoa": "^1.2.5",
+    "@vee-validate/zod": "^4.15.0",
+    "@vueuse/core": "^12.7.0",
+    "lucide-vue-next": "^0.475.0",
+    "motion-v": "^0.10.0",
+    "nuxt": "^3.15.4",
+    "reka-ui": "^2.0.0",
+    "uuid": "^11.1.0",
+    "vee-validate": "^4.15.0",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "zod": "^3.24.2"
   },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
   "devDependencies": {
     "@inspira-ui/plugins": "^0.0.1",
-    "@nuxt/devtools": "^1.7.0",
+    "@nuxtjs/tailwindcss": "6.13.1",
+    "@types/uuid": "^10.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cssnano": "^7.0.6",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "nuxt": "^3.15.4",
-    "prettier": "3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "stylelint": "^16.14.1",
-    "stylelint-config-recess-order": "^6.0.0",
-    "stylelint-config-recommended-vue": "^1.6.0",
-    "stylelint-config-standard": "^37.0.0",
-    "stylelint-config-standard-scss": "^14.0.0",
-    "stylelint-prettier": "^5.0.3",
+    "shadcn-nuxt": "^0.11.3",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.7.3",
-    "vue-tsc": "^2.2.0"
-  },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+    "typescript": "^5.7.3"
+  }
 }
